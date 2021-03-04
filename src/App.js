@@ -33,6 +33,16 @@ function App() {
   } */
 
 
+  function 제목추가() {
+    var array5 = [...글제목];
+    array5.unshift(입력값);
+    var array7 = [...따봉];
+    array7.unshift(0);
+    따봉변경(array7);
+    글제목변경(array5);
+     
+   }
+
   function 함수(){
     return 100
   }
@@ -72,7 +82,12 @@ function App() {
        글제목.map(function(글,i){
          return (
            <div className="list" key={i}>
-          <h3 onClick={ ()=>{ 누른제목변경(i)} }>{글} <span onClick={()=>{  따봉변경(따봉+1) } }>👍</span>{따봉}</h3>
+          <h3 onClick={ ()=>{ 누른제목변경(i)} }>{글}
+           <span onClick={()=>{ 
+             var array3 = [...따봉];
+             array3[i] = array3[i]+1;
+             따봉변경(array3);
+          } }>👍</span>{따봉[i]}</h3>
               <p>2월 17일 발행</p>
               <hr/>
             </div>)           
@@ -81,21 +96,24 @@ function App() {
 
      <div className="publish">
        <input onChange={ (e)=>{ 입력값변경(e.target.value) } }/>
-       <button onClick={ ()=>{
-         var array5 = [...글제목];
-         array5.unshift(입력값);
-         글제목변경(array5);
-       } }>저장</button>
-
+       <button onClick={ 제목추가 }>저장</button>  
      </div>
 
+     
+   
+        
 
      {/* <input onChange={ (e)=>{ 입력값변경(e.target.value) } } /> */}  {/* e.target : 현재 이벤트가 동작한곳 */}
      
         
     </div>
   );
+
+ 
+
 }
+
+
 
 
 
